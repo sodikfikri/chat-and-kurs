@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert Money</title>
+    <link rel="stylesheet" href="./css/bootstrap.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card p-3">
+                    <fieldset>
+                        <legend><h1 class="font-weight-bold">Converting Currency To Rupiah</h1></legend>
+                        <form>
+                            <div class="form-row">
+                              <div class="col">
+                                <input type="text" class="form-control" id="asing" onkeyup="Currency();" placeholder="Masukan Nominal Uang">
+                              </div>
+                              <div class="col">
+                                <select class="form-control" id="list-currency" onchange="Currency_List();">
+                                    <option value="dolar_us">Dolar US</option>
+                                    <option value="dolar_singapure">Dolar Singapure</option>
+                                    <option value="ringgit_malaysia">Riggit Malaysia</option>
+                                    <option value="yen_jepang">Yen Jepang</option>
+                                    <option value="euro">Euro</option>
+                                    <option value="riyal_arab_saudi">Riyal Arab Saudi</option>
+                                </select>
+                              </div>
+                              <div class="col">
+                                <input type="text" class="form-control" id="rupiah" placeholder="Rupiah">
+                              </div>
+                            </div>
+                          </form>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    // set variable
+    var asing = document.getElementById("asing")
+    var rupiah = document.getElementById("rupiah")
+
+
+    // converting
+    function Currency() {
+        var list =  document.getElementById("list-currency").value
+        var res;
+        if (list == "dolar_us") {
+            res = asing.value * 9.915
+        } else if(list == "yen_jepang") {
+            res = asing.value * 120
+        } else if(list == "dolar_singapure"){
+            res = asing.value * 13.472
+        } else if (list == "ringgit_malaysia") {
+            res = asing.value * 874
+        } else if (list == "euro") {
+            res = asing.value * 15.888
+        } else if (list == "riyal_arab_saudi"){
+            res = asing.value * 3.592
+        }
+        var reverse = res.toString().split('').reverse().join(''),
+            rp = reverse.match(/\d{1,3}/g);
+            rp = rp.join('.').split('').reverse().join('');
+        rupiah.value="Rp. "+rp;
+    }
+
+    function Currency_List() {
+        var list =  document.getElementById("list-currency").value
+        var res;
+        if (list == "dolar_us") {
+            res = asing.value * 9.915
+        } else if(list == "yen_jepang") {
+            res = asing.value * 120
+        } else if(list == "dolar_singapure"){
+            res = asing.value * 13.472
+        } else if (list == "ringgit_malaysia") {
+            res = asing.value * 874
+        } else if (list == "euro") {
+            res = asing.value * 15.888
+        } else if (list == "riyal_arab_saudi"){
+            res = asing.value * 3.592
+        }
+        var reverse = res.toString().split('').reverse().join(''),
+            rp = reverse.match(/\d{1,3}/g);
+            rp = rp.join('.').split('').reverse().join('');
+        rupiah.value="Rp. "+rp;
+    }
+
+</script>
+
+</html>
